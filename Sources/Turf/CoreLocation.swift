@@ -108,7 +108,7 @@ extension LocationDegrees {
     }
 }
 
-public struct LocationCoordinate2DCodable: Codable {
+public struct LocationCoordinate2DCodable: Codable, Sendable {
     public var latitude: LocationDegrees
     public var longitude: LocationDegrees
     public var decodedCoordinates: LocationCoordinate2D {
@@ -133,6 +133,11 @@ public struct LocationCoordinate2DCodable: Codable {
     }
 }
 
+extension LocationCoordinate2DCodable: Equatable {
+    public static func ==(lhs: LocationCoordinate2DCodable, rhs: LocationCoordinate2DCodable) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
+}
 
 extension LocationCoordinate2D {
     public var codableCoordinates: LocationCoordinate2DCodable {
