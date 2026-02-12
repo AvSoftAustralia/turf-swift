@@ -50,7 +50,7 @@ public typealias LocationDegrees = Double
 /**
  A geographic coordinate with its components measured in degrees.
  */
-public struct LocationCoordinate2D {
+public struct LocationCoordinate2D: Codable, Sendable {
     /**
      The latitude in degrees.
      */
@@ -133,7 +133,7 @@ public struct LocationCoordinate2DCodable: Codable, Sendable {
     }
 }
 
-extension LocationCoordinate2DCodable: Equatable {
+extension   : Equatable {
     public static func ==(lhs: LocationCoordinate2DCodable, rhs: LocationCoordinate2DCodable) -> Bool {
         return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
